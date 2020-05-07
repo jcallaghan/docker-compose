@@ -1,0 +1,14 @@
+esphome:
+  container_name: docker-esphome
+  net: "host"
+  restart: always
+  user: 0:0
+  environment:
+    - HOME = "/"
+  image: esphome/esphome:dev
+  ports:
+    - 0.0.0.0:6052:6052
+    - 0.0.0.0:6123:6123
+  volumes:
+    - /volume1/docker/esphome-config:/config:rw
+  command: config/ dashboard
